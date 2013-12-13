@@ -9,8 +9,8 @@ Zit is simple to use.  Just include it and create a new container:
 
 ```php
 <?php
-require_once '/path/to/lib/Zit/Container.php';
-$container = new \Zit\Container();
+require_once '/path/to/lib/Zit/Zit_Container.php';
+$container = new \Zit\Zit_Container();
 ?>
 ```
 
@@ -115,7 +115,7 @@ $key = $container->get('api_key');
 ?>
 ```
 
-## Custom Container
+## Custom Zit_Container
 
 Most projects will benefit from a custom container that sets up its own injection rules.  This
 is as simple as extending Zit:
@@ -124,7 +124,7 @@ is as simple as extending Zit:
 <?php
 namespace MyApp\Di;
 
-class Container extends \Zit\Container
+class Zit_Container extends \Zit\Zit_Container
 {
 	public function __construct()
 	{

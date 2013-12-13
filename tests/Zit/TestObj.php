@@ -1,8 +1,6 @@
 <?php
 
-namespace Zit;
-
-class TestObj
+class Zit_TestObj
 {
 	public $name;
 	

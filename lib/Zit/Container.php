@@ -1,8 +1,6 @@
 <?php
 
-namespace Zit;
-
-class Container
+class Zit_Container
 {
 	protected $_objects = array();
 	protected $_callbacks = array();

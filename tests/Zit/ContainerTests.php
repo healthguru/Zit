@@ -1,18 +1,20 @@
 <?php
 
-require_once '../lib/Zit/Container.php';
-require_once 'TestObj.php';
-require_once 'PHPUnit/Framework/TestCase.php';
+// composer generated autoload file
+if(file_exists('../../vendor/autoload.php')) {
+    require_once('../../vendor/autoload.php');
+}
 
-use Zit\Container;
+require_once '../../lib/Zit/Container.php';
+require_once 'TestObj.php';
 
 /**
- * Container test case.
+ * Zit_Container test case.
  */
-class ContainerTests extends PHPUnit_Framework_TestCase
+class Zit_ContainerTests extends PHPUnit_Framework_TestCase
 {
 	/**
-	 * @var Container
+	 * @var Zit_Container
 	 */
 	private $container;
 
@@ -22,7 +24,7 @@ class ContainerTests extends PHPUnit_Framework_TestCase
 	protected function setUp()
 	{
 		parent::setUp();
-		$this->container = new Container();
+		$this->container = new Zit_Container();
 	}
 
 	/**
@@ -62,18 +64,18 @@ class ContainerTests extends PHPUnit_Framework_TestCase
 		
 		// Explicit Call
 		$c->set('test', function($c, $name) {
-			return new \Zit\TestObj($name);
+			return new Zit_TestObj($name);
 		});
 		$obj = $c->get('test', 'testing');
-		$this->assertInstanceOf('\\Zit\\TestObj', $obj);
+		$this->assertInstanceOf('Zit_TestObj', $obj);
 		$this->assertAttributeEquals('testing', 'name', $obj);
 		
 		// Magic Call
 		$c->setAnotherTest(function($c, $name) {
-			return new \Zit\TestObj($name);
+			return new Zit_TestObj($name);
 		});
 		$obj2 = $c->getAnotherTest('still testing');
-		$this->assertInstanceOf('\\Zit\\TestObj', $obj2);
+		$this->assertInstanceOf('Zit_TestObj', $obj2);
 		$this->assertAttributeEquals('still testing', 'name', $obj2);
 		
 		// Sanity Check
@@ -85,7 +87,7 @@ class ContainerTests extends PHPUnit_Framework_TestCase
 		$c = $this->container;
 		
 		$c->setObj(function($c, $name) {
-			return new \Zit\TestObj($name);
+			return new Zit_TestObj($name);
 		});
 		
 		$o1 = $c->fresh('obj', 'one');
@@ -143,7 +145,7 @@ class ContainerTests extends PHPUnit_Framework_TestCase
 		$c = $this->container;
 		
 		$c->setTestObj(function($c, $name) {
-			return new \Zit\TestObj($name);
+			return new Zit_TestObj($name);
 		});
 		
 		$o1 = $c->getTestObj('A');
@@ -162,12 +164,12 @@ class ContainerTests extends PHPUnit_Framework_TestCase
 		$c = $this->container;
 		
 		$c->set_with_underscores(function($c, $name) {
-			return new \Zit\TestObj($name);
+			return new Zit_TestObj($name);
 		});
 		
 		$obj = $c->get_with_underscores('Alternate');
 		
-		$this->assertInstanceOf('\\Zit\\TestObj', $obj);
+		$this->assertInstanceOf('Zit_TestObj', $obj);
 		$this->assertAttributeEquals('Alternate', 'name', $obj);
 	}
 	
@@ -176,12 +178,12 @@ class ContainerTests extends PHPUnit_Framework_TestCase
 		$c = $this->container;
 		
 		$c->setObjectOne(function() {
-			return new \Zit\TestObj('object one');
+			return new Zit_TestObj('object one');
 		});
 		
 		$obj = $c->get_object_one();
 		
-		$this->assertInstanceOf('\\Zit\\TestObj', $obj);
+		$this->assertInstanceOf('Zit_TestObj', $obj);
 		$this->assertAttributeEquals('object one', 'name', $obj);
 	}
 }

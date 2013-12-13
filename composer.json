@@ -7,9 +7,12 @@
     "require": {
         "php": ">=5.3.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
     "autoload": {
         "psr-0": {
-            "Zit\\": "lib/Zit"
+            "Zit_": "lib/Zit"
         }
     },
     "include-path": [".", "lib/"]
